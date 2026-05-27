@@ -326,12 +326,12 @@
                 <input type="file" id="fileInput" accept=".xlsx,.xls" onchange="importExcel(event)">
                 <label for="fileInput" class="file-label">📁 Seleccionar Archivo Excel</label>
                 <p style="margin-top: 15px; font-size: 0.85em; color: #6c757d;">
-                    El sistema leerá: Parámetros, Actividades de Estimación y Mantenimiento
+                    El sistema leerá automáticamente: Parámetros, Actividades de Estimación y Mantenimiento
                 </p>
             </div>
 
             <div class="formula-note">
-                <strong>💡 Nota:</strong> Los datos mostrados actualmente son los del archivo original de BELLEMART. 
+                <strong>💡 Nota:</strong> Los datos mostrados actualmente son los del archivo original de CLIENTE. 
                 Puedes editarlos directamente o importar un nuevo archivo Excel con el mismo formato.
             </div>
 
@@ -452,7 +452,7 @@
         <div id="estimation" class="tab-content">
             <div style="display: flex; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 10px;">
                 <label style="font-weight: 600; color: #495057;">Cliente:</label>
-                <input type="text" class="client-input" id="cliente" value="BELLEMART" style="width: 200px;">
+                <input type="text" class="client-input" id="cliente" value="CLIENTE" style="width: 200px;">
                 <label style="font-weight: 600; color: #495057;">Fecha:</label>
                 <input type="date" class="client-input" id="fecha" value="2026-03-06">
             </div>
@@ -671,7 +671,7 @@
 
                     // Cliente y fecha (fila 3, índice 2)
                     if (estData[2]) {
-                        document.getElementById('cliente').value = estData[2][3] || 'BELLEMART';
+                        document.getElementById('cliente').value = estData[2][3] || 'CLIENTE';
                         const fechaVal = estData[2][7];
                         if (fechaVal && typeof fechaVal === 'number') {
                             // Convertir serial de Excel a fecha
