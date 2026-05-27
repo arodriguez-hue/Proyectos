@@ -14,7 +14,7 @@
             padding: 20px;
         }
         .container {
-            max-width: 1400px;
+            max-width: 1500px;
             margin: 0 auto;
             background: white;
             border-radius: 20px;
@@ -33,6 +33,7 @@
             display: flex;
             background: #f8f9fa;
             border-bottom: 2px solid #e9ecef;
+            flex-wrap: wrap;
         }
         .tab {
             flex: 1;
@@ -45,6 +46,7 @@
             border: none;
             background: transparent;
             font-size: 1em;
+            min-width: 150px;
         }
         .tab:hover { background: #e9ecef; color: #495057; }
         .tab.active {
@@ -58,7 +60,7 @@
         /* Parámetros */
         .params-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 20px;
             margin-bottom: 30px;
         }
@@ -82,9 +84,10 @@
         .param-row label {
             font-weight: 500;
             color: #6c757d;
+            font-size: 0.95em;
         }
         .param-row input {
-            width: 100px;
+            width: 110px;
             padding: 8px 12px;
             border: 2px solid #dee2e6;
             border-radius: 8px;
@@ -96,32 +99,42 @@
             outline: none;
             border-color: #667eea;
         }
+        .param-value {
+            background: #e9ecef;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-weight: 600;
+            color: #495057;
+            min-width: 100px;
+            text-align: right;
+        }
 
         /* Estimación */
         .info-bar {
             display: flex;
-            gap: 20px;
+            gap: 15px;
             margin-bottom: 20px;
             flex-wrap: wrap;
         }
         .info-item {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 15px 25px;
+            padding: 15px 20px;
             border-radius: 12px;
-            min-width: 150px;
+            min-width: 160px;
+            flex: 1;
         }
-        .info-item label { font-size: 0.85em; opacity: 0.9; display: block; }
-        .info-item .value { font-size: 1.5em; font-weight: bold; }
+        .info-item label { font-size: 0.8em; opacity: 0.9; display: block; margin-bottom: 4px; }
+        .info-item .value { font-size: 1.4em; font-weight: bold; }
 
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 20px;
-            font-size: 0.9em;
+            margin-top: 15px;
+            font-size: 0.85em;
         }
         th, td {
-            padding: 12px 10px;
+            padding: 10px 8px;
             text-align: center;
             border: 1px solid #dee2e6;
         }
@@ -131,17 +144,19 @@
             font-weight: 600;
             position: sticky;
             top: 0;
+            font-size: 0.8em;
         }
         tr:nth-child(even) { background: #f8f9fa; }
         tr:hover { background: #e9ecef; }
-        td input {
+        td input, td select {
             width: 100%;
-            padding: 6px;
+            padding: 5px;
             border: 1px solid #dee2e6;
             border-radius: 4px;
             text-align: center;
+            font-size: 0.9em;
         }
-        td input:focus { outline: none; border-color: #667eea; }
+        td input:focus, td select:focus { outline: none; border-color: #667eea; }
         .totals-row {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
             color: white !important;
@@ -156,6 +171,7 @@
             border-radius: 12px;
             padding: 20px;
             margin-top: 20px;
+            max-width: 500px;
         }
         .summary-box h3 { margin-bottom: 15px; color: #495057; }
         .summary-row {
@@ -183,7 +199,7 @@
             flex-wrap: wrap;
         }
         .btn {
-            padding: 14px 35px;
+            padding: 14px 30px;
             border: none;
             border-radius: 10px;
             font-size: 1em;
@@ -209,6 +225,11 @@
             color: white;
         }
         .btn-danger:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(255,65,108,0.4); }
+        .btn-info {
+            background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%);
+            color: white;
+        }
+        .btn-info:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,114,255,0.4); }
 
         .add-row-btn {
             background: #28a745;
@@ -241,11 +262,45 @@
         }
         .client-input:focus { outline: none; border-color: #667eea; }
 
+        .import-section {
+            background: #e7f3ff;
+            border: 2px dashed #667eea;
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .import-section h3 { color: #667eea; margin-bottom: 10px; }
+        .import-section p { color: #6c757d; margin-bottom: 15px; }
+        #fileInput { display: none; }
+        .file-label {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .file-label:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(102,126,234,0.4); }
+
+        .formula-note {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 0.9em;
+            color: #856404;
+        }
+
         @media (max-width: 768px) {
             .params-grid { grid-template-columns: 1fr; }
             .info-bar { flex-direction: column; }
-            table { font-size: 0.75em; }
-            th, td { padding: 6px 4px; }
+            table { font-size: 0.7em; }
+            th, td { padding: 6px 3px; }
+            .btn { padding: 10px 20px; font-size: 0.9em; }
         }
     </style>
 </head>
@@ -253,44 +308,74 @@
     <div class="container">
         <div class="header">
             <h1>📊 Formato de Cotización de Proyectos</h1>
-            <p>Estimación paramétrica con PERT, analogía y bottom-up</p>
+            <p>Estimación paramétrica con PERT, analogía y bottom-up — Importado desde Excel</p>
         </div>
 
         <div class="tabs">
-            <button class="tab active" onclick="showTab('params')">⚙️ Parámetros</button>
+            <button class="tab active" onclick="showTab('import')">📥 Importar Excel</button>
+            <button class="tab" onclick="showTab('params')">⚙️ Parámetros</button>
             <button class="tab" onclick="showTab('estimation')">📋 Estimación</button>
             <button class="tab" onclick="showTab('maintenance')">🔧 Mantenimiento</button>
         </div>
 
+        <!-- TAB IMPORTAR -->
+        <div id="import" class="tab-content active">
+            <div class="import-section">
+                <h3>📂 Importar desde Excel</h3>
+                <p>Selecciona tu archivo <strong>Formato de Cotización.xlsx</strong> para cargar todos los datos automáticamente.</p>
+                <input type="file" id="fileInput" accept=".xlsx,.xls" onchange="importExcel(event)">
+                <label for="fileInput" class="file-label">📁 Seleccionar Archivo Excel</label>
+                <p style="margin-top: 15px; font-size: 0.85em; color: #6c757d;">
+                    El sistema leerá: Parámetros, Actividades de Estimación y Mantenimiento
+                </p>
+            </div>
+
+            <div class="formula-note">
+                <strong>💡 Nota:</strong> Los datos mostrados actualmente son los del archivo original de BELLEMART. 
+                Puedes editarlos directamente o importar un nuevo archivo Excel con el mismo formato.
+            </div>
+
+            <div class="btn-group">
+                <button class="btn btn-primary" onclick="showTab('params'); document.querySelectorAll('.tab')[1].click()">⚙️ Ir a Parámetros</button>
+                <button class="btn btn-success" onclick="downloadExcel()">📥 Descargar Excel</button>
+            </div>
+        </div>
+
         <!-- TAB PARÁMETROS -->
-        <div id="params" class="tab-content active">
+        <div id="params" class="tab-content">
             <h2 style="margin-bottom: 20px; color: #495057;">Configuración de Parámetros</h2>
             <div class="params-grid">
                 <div class="param-card">
-                    <h3>📐 Factores de Estimación</h3>
+                    <h3>📐 Factores de Estimación (Análoga)</h3>
                     <div class="param-row">
-                        <label>Análoga Optimista</label>
+                        <label>Optimista</label>
                         <input type="number" step="0.01" id="analog_opt" value="0.75">
                     </div>
                     <div class="param-row">
-                        <label>Análoga Pesimista</label>
+                        <label>Pesimista</label>
                         <input type="number" step="0.01" id="analog_pes" value="1.75">
                     </div>
-                    <div class="param-row">
-                        <label>Paramétrica Optimista</label>
-                        <input type="number" step="0.01" id="param_opt" value="0.9">
+                    <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #dee2e6;">
+                        <h3 style="margin-bottom: 10px; font-size: 1em;">📐 Paramétrica</h3>
+                        <div class="param-row">
+                            <label>Optimista</label>
+                            <input type="number" step="0.01" id="param_opt" value="0.9">
+                        </div>
+                        <div class="param-row">
+                            <label>Pesimista</label>
+                            <input type="number" step="0.01" id="param_pes" value="1.25">
+                        </div>
                     </div>
-                    <div class="param-row">
-                        <label>Paramétrica Pesimista</label>
-                        <input type="number" step="0.01" id="param_pes" value="1.25">
-                    </div>
-                    <div class="param-row">
-                        <label>Ascendente Optimista</label>
-                        <input type="number" step="0.01" id="asc_opt" value="0.95">
-                    </div>
-                    <div class="param-row">
-                        <label>Ascendente Pesimista</label>
-                        <input type="number" step="0.01" id="asc_pes" value="1.1">
+                    <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #dee2e6;">
+                        <h3 style="margin-bottom: 10px; font-size: 1em;">📐 Ascendente (Bottom-Up)</h3>
+                        <div class="param-row">
+                            <label>Optimista</label>
+                            <input type="number" step="0.01" id="asc_opt" value="0.95">
+                        </div>
+                        <div class="param-row">
+                            <label>Pesimista</label>
+                            <input type="number" step="0.01" id="asc_pes" value="1.1">
+                        </div>
                     </div>
                 </div>
 
@@ -344,6 +429,16 @@
                         <label>Utilidad (%)</label>
                         <input type="number" step="0.01" id="utilidad_pct" value="0.2">
                     </div>
+                    <div style="margin-top: 20px; padding: 15px; background: #e7f3ff; border-radius: 8px;">
+                        <div class="param-row">
+                            <label style="color: #667eea; font-weight: bold;">Valor promedio mes ($)</label>
+                            <span class="param-value" id="val_prom_mes">4,160.00</span>
+                        </div>
+                        <div class="param-row" style="margin-top: 8px;">
+                            <label style="color: #667eea; font-weight: bold;">Margen total (%)</label>
+                            <span class="param-value" id="margen_total">30%</span>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -364,7 +459,7 @@
 
             <div class="info-bar">
                 <div class="info-item">
-                    <label>Valor Total del Proyecto</label>
+                    <label>Valor Total Proyecto</label>
                     <div class="value" id="val_total">$44,023.20</div>
                 </div>
                 <div class="info-item">
@@ -376,19 +471,26 @@
                     <div class="value" id="val_mensual">$7,411.31</div>
                 </div>
                 <div class="info-item">
-                    <label>Número de Recursos</label>
-                    <div class="value" id="num_recursos">2</div>
+                    <label>N° Recursos</label>
+                    <div class="value" id="num_recursos">2.67</div>
+                </div>
+                <div class="info-item">
+                    <label>Total PERT (días)</label>
+                    <div class="value" id="total_pert">89.92</div>
                 </div>
             </div>
 
-            <button class="add-row-btn" onclick="addActivity()">➕ Agregar Actividad</button>
+            <div style="display: flex; gap: 10px; margin-bottom: 15px; flex-wrap: wrap;">
+                <button class="add-row-btn" onclick="addActivity()">➕ Agregar Actividad</button>
+                <button class="add-row-btn" style="background: #6c757d;" onclick="clearAllActivities()">🗑️ Limpiar Todo</button>
+            </div>
 
             <div style="overflow-x: auto;">
                 <table id="estTable">
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Tipo de Actividad</th>
+                            <th>Tipo</th>
                             <th>Nombre de Actividad</th>
                             <th>Descripción</th>
                             <th>Tamaño</th>
@@ -425,7 +527,7 @@
             <div class="btn-group">
                 <button class="btn btn-primary" onclick="recalcAll()">🔄 Recalcular</button>
                 <button class="btn btn-success" onclick="downloadExcel()">📥 Descargar Excel</button>
-                <button class="btn btn-danger" onclick="resetActivities()">🗑️ Restablecer</button>
+                <button class="btn btn-danger" onclick="resetActivities()">↩️ Restablecer Original</button>
             </div>
         </div>
 
@@ -470,7 +572,7 @@
                     <span id="res_maint">$19,096.16</span>
                 </div>
                 <div class="summary-row total">
-                    <span>TOTAL</span>
+                    <span>TOTAL PROYECTO</span>
                     <span id="res_total">$41,330.10</span>
                 </div>
             </div>
@@ -483,71 +585,212 @@
     </div>
 
     <script>
-        // Datos iniciales
-        let activities = [
-            { id: 1, tipo: '', nombre: 'Seguridad', desc: '', tamano: 'S', probable: 7 },
-            { id: 2, tipo: '', nombre: 'Registro de asistencia', desc: '', tamano: 'S', probable: 7 },
-            { id: 3, tipo: '', nombre: 'Registro de ventas por vendedor en el local de asistencia abierta', desc: '', tamano: 'S', probable: 7 },
-            { id: 4, tipo: '', nombre: 'Planificación de vendedoras por horas y locales', desc: '', tamano: 'M', probable: 12 },
-            { id: 5, tipo: '', nombre: 'Carga de archivos excel Fybeca', desc: '', tamano: 'M', probable: 12 },
-            { id: 6, tipo: '', nombre: 'Carga de archivos excel Deprati', desc: '', tamano: 'M', probable: 12 },
-            { id: 7, tipo: '', nombre: 'Dashboards de resultados de ventas y comisiones', desc: '', tamano: 'M', probable: 12 },
-            { id: 8, tipo: '', nombre: 'Reporte de ventas y comisiones', desc: '', tamano: 'S', probable: 7 },
-            { id: 9, tipo: '', nombre: 'Reporte de horas extras', desc: '', tamano: 'S', probable: 7 }
-        ];
+        // ========== DATOS IMPORTADOS DEL EXCEL ==========
+        let activities = [{"id": 1, "tipo": "", "nombre": "Seguridad", "desc": "", "tamano": "S", "probable": 7}, {"id": 2, "tipo": "", "nombre": "Regristro de asistencia", "desc": "", "tamano": "S", "probable": 7}, {"id": 3, "tipo": "", "nombre": "Registro de ventas por vendedor en el local de asistencia abierta", "desc": "", "tamano": "S", "probable": 7}, {"id": 4, "tipo": "", "nombre": "Planificaci\u00f3n de vendedoras por horas y locales", "desc": "", "tamano": "M", "probable": 12}, {"id": 5, "tipo": "", "nombre": "Carga de archivos excel Fybeca", "desc": "", "tamano": "M", "probable": 12}, {"id": 6, "tipo": "", "nombre": "Carga de archivos excel Deprati", "desc": "", "tamano": "M", "probable": 12}, {"id": 7, "tipo": "", "nombre": "Dashboards de resultados de ventas y comisiones", "desc": "", "tamano": "M", "probable": 12}, {"id": 8, "tipo": "", "nombre": "Reporte de ventas y comisiones", "desc": "", "tamano": "S", "probable": 7}, {"id": 9, "tipo": "", "nombre": "Reporte de horas extras", "desc": "", "tamano": "S", "probable": 7}];
+        let maintenance = [{"detalle": "Certificado SSL", "cantidad": 1, "costo": 200, "duracion": "2 a\u00f1os"}, {"detalle": "Hosting", "cantidad": 24, "costo": 6680.16, "duracion": ""}, {"detalle": "Plugin de seguridad", "cantidad": 2, "costo": 200, "duracion": ""}, {"detalle": "Dominio", "cantidad": 2, "costo": 400, "duracion": ""}, {"detalle": "Google Analytics", "cantidad": 2, "costo": 336, "duracion": ""}, {"detalle": "SEO", "cantidad": 1, "costo": 4800, "duracion": ""}, {"detalle": "Respaldos", "cantidad": 24, "costo": 480, "duracion": ""}, {"detalle": "Personal soporte", "cantidad": 0, "costo": 6000, "duracion": ""}];
 
-        let maintenance = [
-            { detalle: 'Certificado SSL', cantidad: 1, costo: 200, duracion: '2 años' },
-            { detalle: 'Hosting', cantidad: 24, costo: 6680.16, duracion: '' },
-            { detalle: 'Plugin de seguridad', cantidad: 2, costo: 200, duracion: '' },
-            { detalle: 'Dominio', cantidad: 2, costo: 400, duracion: '' },
-            { detalle: 'Google Analytics', cantidad: 2, costo: 336, duracion: '' },
-            { detalle: 'SEO', cantidad: 1, costo: 4800, duracion: '' },
-            { detalle: 'Respaldos', cantidad: 24, costo: 480, duracion: '' },
-            { detalle: 'Personal soporte', cantidad: 0, costo: 6000, duracion: '' }
-        ];
+        let originalActivities = JSON.parse(JSON.stringify(activities));
+        let originalMaintenance = JSON.parse(JSON.stringify(maintenance));
 
         // Parámetros
         let params = {
             analog_opt: 0.75, analog_pes: 1.75,
             param_opt: 0.9, param_pes: 1.25,
             asc_opt: 0.95, asc_pes: 1.1,
-            dur: { XXS: 1, XS: 3, S: 7, M: 12, L: 15, XL: 20, XXL: 30, VL: 40 },
+            dur: {
+                XXS: 1, XS: 3, S: 7, M: 12,
+                L: 15, XL: 20, XXL: 30, VL: 40
+            },
             costo_mes: 3200,
             riesgo_pct: 0.1,
             utilidad_pct: 0.2
         };
 
+        // ========== FUNCIONES DE NAVEGACIÓN ==========
         function showTab(tabId) {
             document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
             document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
             document.getElementById(tabId).classList.add('active');
-            event.target.classList.add('active');
+
+            // Actualizar tabs
+            const tabs = ['import', 'params', 'estimation', 'maintenance'];
+            const idx = tabs.indexOf(tabId);
+            if (idx >= 0) {
+                document.querySelectorAll('.tab')[idx].classList.add('active');
+            }
         }
 
+        // ========== IMPORTAR EXCEL ==========
+        function importExcel(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const data = new Uint8Array(e.target.result);
+                const workbook = XLSX.read(data, {type: 'array'});
+
+                // Leer Parámetros
+                const wsParams = workbook.Sheets['Parametros'];
+                if (wsParams) {
+                    const paramsData = XLSX.utils.sheet_to_json(wsParams, {header: 1});
+                    // Extraer valores de parámetros
+                    for (let i = 1; i < paramsData.length; i++) {
+                        const row = paramsData[i];
+                        if (!row) continue;
+
+                        if (row[0] === 'Análoga' && row[1] === 'Optimista') params.analog_opt = parseFloat(row[2]) || 0.75;
+                        if (row[0] === 'Análoga' && row[1] === 'Pesimista') params.analog_pes = parseFloat(row[2]) || 1.75;
+                        if (row[0] === 'Parametrica ' && row[1] === 'Optimista') params.param_opt = parseFloat(row[2]) || 0.9;
+                        if (row[0] === 'Parametrica ' && row[1] === 'Pesimista') params.param_pes = parseFloat(row[2]) || 1.25;
+                        if (row[0] === 'Ascendente' && row[1] === 'Optimista') params.asc_opt = parseFloat(row[2]) || 0.95;
+                        if (row[0] === 'Ascendente' && row[1] === 'Pesimista') params.asc_pes = parseFloat(row[2]) || 1.1;
+
+                        if (row[0] === 'Duración en días') {
+                            if (row[1] === 'XXS') params.dur.XXS = parseFloat(row[2]) || 1;
+                            if (row[1] === 'XS') params.dur.XS = parseFloat(row[2]) || 3;
+                            if (row[1] === 'S') params.dur.S = parseFloat(row[2]) || 7;
+                            if (row[1] === 'M') params.dur.M = parseFloat(row[2]) || 12;
+                            if (row[1] === 'L') params.dur.L = parseFloat(row[2]) || 15;
+                            if (row[1] === 'XL') params.dur.XL = parseFloat(row[2]) || 20;
+                            if (row[1] === 'XXL') params.dur.XXL = parseFloat(row[2]) || 30;
+                            if (row[1] === 'VL') params.dur.VL = parseFloat(row[2]) || 40;
+                        }
+
+                        if (row[0] === 'Costo promedio mes recurso') params.costo_mes = parseFloat(row[2]) || 3200;
+                        if (row[0] === 'Riesgo') params.riesgo_pct = parseFloat(row[1]) || 0.1;
+                        if (row[0] === 'Utilidad') params.utilidad_pct = parseFloat(row[1]) || 0.2;
+                    }
+                    updateParamInputs();
+                }
+
+                // Leer Estimación
+                const wsEst = workbook.Sheets['Estimación'];
+                if (wsEst) {
+                    const estData = XLSX.utils.sheet_to_json(wsEst, {header: 1});
+
+                    // Cliente y fecha (fila 3, índice 2)
+                    if (estData[2]) {
+                        document.getElementById('cliente').value = estData[2][3] || 'BELLEMART';
+                        const fechaVal = estData[2][7];
+                        if (fechaVal && typeof fechaVal === 'number') {
+                            // Convertir serial de Excel a fecha
+                            const epoch = new Date(1899, 11, 30);
+                            const date = new Date(epoch.getTime() + fechaVal * 86400000);
+                            document.getElementById('fecha').value = date.toISOString().split('T')[0];
+                        } else if (fechaVal) {
+                            document.getElementById('fecha').value = new Date(fechaVal).toISOString().split('T')[0];
+                        }
+                    }
+
+                    // Actividades (filas 8+, índice 7+)
+                    activities = [];
+                    for (let i = 7; i < estData.length; i++) {
+                        const row = estData[i];
+                        if (!row || !row[0] || !row[2]) continue;
+                        if (row[2] === 'Nombre de Actividad') continue;
+
+                        activities.push({
+                            id: parseInt(row[0]) || activities.length + 1,
+                            tipo: row[1] || '',
+                            nombre: row[2] || '',
+                            desc: row[3] || '',
+                            tamano: row[4] || 'S',
+                            probable: parseFloat(row[5]) || 0
+                        });
+                    }
+
+                    if (activities.length === 0) {
+                        activities = JSON.parse(JSON.stringify(originalActivities));
+                    }
+                }
+
+                // Leer Mantenimiento
+                const wsMaint = workbook.Sheets['Mantenimiento'];
+                if (wsMaint) {
+                    const maintData = XLSX.utils.sheet_to_json(wsMaint, {header: 1});
+                    maintenance = [];
+                    for (let i = 2; i < maintData.length; i++) {
+                        const row = maintData[i];
+                        if (!row || !row[1]) continue;
+                        if (row[1] === 'Total' || row[1] === 'Resumen de proyecto') continue;
+                        if (row[1] === 'Detalle') continue;
+
+                        maintenance.push({
+                            detalle: row[1] || '',
+                            cantidad: parseFloat(row[2]) || 0,
+                            costo: parseFloat(row[3]) || 0,
+                            duracion: row[4] || ''
+                        });
+                    }
+
+                    if (maintenance.length === 0) {
+                        maintenance = JSON.parse(JSON.stringify(originalMaintenance));
+                    }
+                }
+
+                originalActivities = JSON.parse(JSON.stringify(activities));
+                originalMaintenance = JSON.parse(JSON.stringify(maintenance));
+
+                renderEstimation();
+                renderMaintenance();
+                applyParams();
+
+                alert('✅ Archivo importado correctamente');
+                showTab('params');
+            };
+            reader.readAsArrayBuffer(file);
+        }
+
+        function updateParamInputs() {
+            document.getElementById('analog_opt').value = params.analog_opt;
+            document.getElementById('analog_pes').value = params.analog_pes;
+            document.getElementById('param_opt').value = params.param_opt;
+            document.getElementById('param_pes').value = params.param_pes;
+            document.getElementById('asc_opt').value = params.asc_opt;
+            document.getElementById('asc_pes').value = params.asc_pes;
+            document.getElementById('dur_xxs').value = params.dur.XXS;
+            document.getElementById('dur_xs').value = params.dur.XS;
+            document.getElementById('dur_s').value = params.dur.S;
+            document.getElementById('dur_m').value = params.dur.M;
+            document.getElementById('dur_l').value = params.dur.L;
+            document.getElementById('dur_xl').value = params.dur.XL;
+            document.getElementById('dur_xxl').value = params.dur.XXL;
+            document.getElementById('dur_vl').value = params.dur.VL;
+            document.getElementById('costo_mes').value = params.costo_mes;
+            document.getElementById('riesgo_pct').value = params.riesgo_pct;
+            document.getElementById('utilidad_pct').value = params.utilidad_pct;
+        }
+
+        // ========== CÁLCULOS ==========
         function getDuration(tamano) {
             const map = {
-                'XXS': params.dur.XXS, 'XS': params.dur.XS, 'S': params.dur.S,
-                'M': params.dur.M, 'L': params.dur.L, 'XL': params.dur.XL,
-                'XXL': params.dur.XXL, 'VL': params.dur.VL
+                'XXS': params.dur.XXS, 'XS': params.dur.XS, 'S': params.dur.S, 'M': params.dur.M,
+                'L': params.dur.L, 'XL': params.dur.XL, 'XXL': params.dur.XXL, 'VL': params.dur.VL
             };
             return map[tamano] || 0;
         }
 
         function calcRow(act) {
             const dur = getDuration(act.tamano);
-            const optimista = dur * params.analog_opt;
-            const pesimista = dur * params.analog_pes;
-            const pert = (optimista + 4 * dur + pesimista) / 6;
+            const probable = parseFloat(act.probable) || dur;
+            const optimista = probable * params.analog_opt;
+            const pesimista = probable * params.analog_pes;
+            const pert = (optimista + 4 * probable + pesimista) / 6;
             const sigma = (pesimista - optimista) / 6;
             const sigma2 = pert + 2 * sigma;
 
-            const costo_dia = params.costo_mes / 30;
+            // Costo: PERT * (costo_mes / 22) -- fórmula original del Excel
+            const costo_dia = params.costo_mes / 22;
             const costo = pert * costo_dia;
 
-            return { optimista, pesimista, pert, sigma, sigma2, duracion: pert, costo };
+            // Duración en días: PERT * 8 / (costo_mes/22) -- aproximación de la fórmula original
+            const duracion_dias = pert * 8 / costo_dia;
+
+            return { optimista, pesimista, pert, sigma, sigma2, duracion: duracion_dias, costo, probable };
         }
 
+        // ========== RENDER ESTIMACIÓN ==========
         function renderEstimation() {
             const tbody = document.getElementById('estBody');
             tbody.innerHTML = '';
@@ -556,7 +799,7 @@
 
             activities.forEach((act, idx) => {
                 const calc = calcRow(act);
-                totProbable += act.probable || 0;
+                totProbable += calc.probable;
                 totOpt += calc.optimista;
                 totPes += calc.pesimista;
                 totPert += calc.pert;
@@ -568,11 +811,11 @@
                 const row = document.createElement('tr');
                 row.innerHTML = `
                     <td>${act.id}</td>
-                    <td><input type="text" value="${act.tipo}" onchange="activities[${idx}].tipo=this.value"></td>
-                    <td><input type="text" value="${act.nombre}" onchange="activities[${idx}].nombre=this.value" style="min-width: 250px;"></td>
-                    <td><input type="text" value="${act.desc}" onchange="activities[${idx}].desc=this.value"></td>
+                    <td><input type="text" value="${act.tipo || ''}" onchange="activities[${idx}].tipo=this.value" style="min-width:80px;"></td>
+                    <td><input type="text" value="${act.nombre || ''}" onchange="activities[${idx}].nombre=this.value" style="min-width:220px;"></td>
+                    <td><input type="text" value="${act.desc || ''}" onchange="activities[${idx}].desc=this.value" style="min-width:120px;"></td>
                     <td>
-                        <select onchange="activities[${idx}].tamano=this.value; renderEstimation();">
+                        <select onchange="activities[${idx}].tamano=this.value; renderEstimation();" style="min-width:60px;">
                             <option value="XXS" ${act.tamano==='XXS'?'selected':''}>XXS</option>
                             <option value="XS" ${act.tamano==='XS'?'selected':''}>XS</option>
                             <option value="S" ${act.tamano==='S'?'selected':''}>S</option>
@@ -583,14 +826,14 @@
                             <option value="VL" ${act.tamano==='VL'?'selected':''}>VL</option>
                         </select>
                     </td>
-                    <td><input type="number" value="${act.probable}" onchange="activities[${idx}].probable=parseFloat(this.value)||0; renderEstimation();"></td>
+                    <td><input type="number" value="${calc.probable}" onchange="activities[${idx}].probable=parseFloat(this.value)||0; renderEstimation();" style="min-width:50px;"></td>
                     <td>${calc.optimista.toFixed(2)}</td>
                     <td>${calc.pesimista.toFixed(2)}</td>
-                    <td>${calc.pert.toFixed(2)}</td>
+                    <td><strong>${calc.pert.toFixed(2)}</strong></td>
                     <td>${calc.sigma.toFixed(2)}</td>
                     <td>${calc.sigma2.toFixed(2)}</td>
                     <td>${calc.duracion.toFixed(2)}</td>
-                    <td>${calc.costo.toFixed(2)}</td>
+                    <td>$${calc.costo.toFixed(2)}</td>
                     <td><button class="remove-btn" onclick="removeActivity(${idx})">🗑️</button></td>
                 `;
                 tbody.appendChild(row);
@@ -603,37 +846,43 @@
             document.getElementById('tot_sigma').textContent = totSigma.toFixed(2);
             document.getElementById('tot_2sigma').textContent = totSigma2.toFixed(2);
             document.getElementById('tot_duracion').textContent = totDur.toFixed(2);
-            document.getElementById('tot_costo').textContent = totCosto.toFixed(2);
+            document.getElementById('tot_costo').textContent = '$' + totCosto.toFixed(2);
 
             // Actualizar resumen
-            const costo_dia = params.costo_mes / 30;
-            const numRecursos = Math.ceil(totCosto / (params.costo_mes));
-            const durMeses = totDur / 30;
-            const valTotal = totCosto * (1 + params.riesgo_pct + params.utilidad_pct);
-            const valMensual = durMeses > 0 ? valTotal / durMeses : 0;
+            const costo_dia = params.costo_mes / 22;
+            const numRecursos = totCosto / (params.costo_mes);
+            const durMeses = totPert / 22; // Fórmula original: PERT total / 22 días hábiles
+
+            // Valor total proyecto: según fórmula original del Excel
+            // =K6*(Parametros!$C$20/22) donde K6=total PERT, C20=valor promedio mes
+            const valPromMes = params.costo_mes * (1 + params.riesgo_pct + params.utilidad_pct);
+            const valTotal = totPert * (valPromMes / 22);
+            const valMensual = durMeses > 0 ? valTotal / Math.ceil(durMeses) : 0;
 
             document.getElementById('val_total').textContent = '$' + valTotal.toLocaleString('es-ES', {minimumFractionDigits: 2, maximumFractionDigits: 2});
-            document.getElementById('dur_meses').textContent = durMeses.toFixed(1);
+            document.getElementById('dur_meses').textContent = Math.ceil(durMeses);
             document.getElementById('val_mensual').textContent = '$' + valMensual.toLocaleString('es-ES', {minimumFractionDigits: 2, maximumFractionDigits: 2});
-            document.getElementById('num_recursos').textContent = numRecursos;
+            document.getElementById('num_recursos').textContent = numRecursos.toFixed(2);
+            document.getElementById('total_pert').textContent = totPert.toFixed(2);
 
             document.getElementById('res_impl').textContent = '$' + valTotal.toLocaleString('es-ES', {minimumFractionDigits: 2, maximumFractionDigits: 2});
             updateSummary();
         }
 
+        // ========== RENDER MANTENIMIENTO ==========
         function renderMaintenance() {
             const tbody = document.getElementById('maintBody');
             tbody.innerHTML = '';
             let total = 0;
 
             maintenance.forEach((item, idx) => {
-                total += item.costo;
+                total += parseFloat(item.costo) || 0;
                 const row = document.createElement('tr');
                 row.innerHTML = `
-                    <td><input type="text" value="${item.detalle}" onchange="maintenance[${idx}].detalle=this.value"></td>
-                    <td><input type="number" value="${item.cantidad}" onchange="maintenance[${idx}].cantidad=parseFloat(this.value)||0"></td>
-                    <td><input type="number" step="0.01" value="${item.costo}" onchange="maintenance[${idx}].costo=parseFloat(this.value)||0; renderMaintenance();"></td>
-                    <td><input type="text" value="${item.duracion}" onchange="maintenance[${idx}].duracion=this.value"></td>
+                    <td><input type="text" value="${item.detalle || ''}" onchange="maintenance[${idx}].detalle=this.value" style="min-width:200px;"></td>
+                    <td><input type="number" value="${item.cantidad || 0}" onchange="maintenance[${idx}].cantidad=parseFloat(this.value)||0"></td>
+                    <td><input type="number" step="0.01" value="${item.costo || 0}" onchange="maintenance[${idx}].costo=parseFloat(this.value)||0; renderMaintenance();"></td>
+                    <td><input type="text" value="${item.duracion || ''}" onchange="maintenance[${idx}].duracion=this.value" style="min-width:80px;"></td>
                     <td><button class="remove-btn" onclick="removeMaintenance(${idx})">🗑️</button></td>
                 `;
                 tbody.appendChild(row);
@@ -655,6 +904,7 @@
             document.getElementById('res_total').textContent = '$' + total.toLocaleString('es-ES', {minimumFractionDigits: 2, maximumFractionDigits: 2});
         }
 
+        // ========== GESTIÓN DE ACTIVIDADES ==========
         function addActivity() {
             const newId = activities.length > 0 ? Math.max(...activities.map(a => a.id)) + 1 : 1;
             activities.push({ id: newId, tipo: '', nombre: 'Nueva Actividad', desc: '', tamano: 'S', probable: 7 });
@@ -666,6 +916,21 @@
             renderEstimation();
         }
 
+        function clearAllActivities() {
+            if (confirm('¿Eliminar TODAS las actividades?')) {
+                activities = [];
+                renderEstimation();
+            }
+        }
+
+        function resetActivities() {
+            if (confirm('¿Restablecer actividades al original importado?')) {
+                activities = JSON.parse(JSON.stringify(originalActivities));
+                renderEstimation();
+            }
+        }
+
+        // ========== GESTIÓN DE MANTENIMIENTO ==========
         function addMaintenanceRow() {
             maintenance.push({ detalle: 'Nuevo ítem', cantidad: 1, costo: 0, duracion: '' });
             renderMaintenance();
@@ -676,6 +941,7 @@
             renderMaintenance();
         }
 
+        // ========== PARÁMETROS ==========
         function applyParams() {
             params.analog_opt = parseFloat(document.getElementById('analog_opt').value) || 0.75;
             params.analog_pes = parseFloat(document.getElementById('analog_pes').value) || 1.75;
@@ -697,8 +963,15 @@
             params.riesgo_pct = parseFloat(document.getElementById('riesgo_pct').value) || 0.1;
             params.utilidad_pct = parseFloat(document.getElementById('utilidad_pct').value) || 0.2;
 
+            // Actualizar valores calculados
+            const valPromMes = params.costo_mes * (1 + params.riesgo_pct + params.utilidad_pct);
+            const margenTotal = ((params.riesgo_pct + params.utilidad_pct) * 100).toFixed(0);
+
+            document.getElementById('val_prom_mes').textContent = valPromMes.toLocaleString('es-ES', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+            document.getElementById('margen_total').textContent = margenTotal + '%';
+
             renderEstimation();
-            alert('✅ Parámetros aplicados correctamente');
+            renderMaintenance();
         }
 
         function recalcAll() {
@@ -711,27 +984,15 @@
             alert('🔄 Mantenimiento actualizado');
         }
 
-        function resetActivities() {
-            if (confirm('¿Estás seguro de restablecer las actividades?')) {
-                activities = [
-                    { id: 1, tipo: '', nombre: 'Seguridad', desc: '', tamano: 'S', probable: 7 },
-                    { id: 2, tipo: '', nombre: 'Registro de asistencia', desc: '', tamano: 'S', probable: 7 },
-                    { id: 3, tipo: '', nombre: 'Registro de ventas por vendedor en el local de asistencia abierta', desc: '', tamano: 'S', probable: 7 },
-                    { id: 4, tipo: '', nombre: 'Planificación de vendedoras por horas y locales', desc: '', tamano: 'M', probable: 12 },
-                    { id: 5, tipo: '', nombre: 'Carga de archivos excel Fybeca', desc: '', tamano: 'M', probable: 12 },
-                    { id: 6, tipo: '', nombre: 'Carga de archivos excel Deprati', desc: '', tamano: 'M', probable: 12 },
-                    { id: 7, tipo: '', nombre: 'Dashboards de resultados de ventas y comisiones', desc: '', tamano: 'M', probable: 12 },
-                    { id: 8, tipo: '', nombre: 'Reporte de ventas y comisiones', desc: '', tamano: 'S', probable: 7 },
-                    { id: 9, tipo: '', nombre: 'Reporte de horas extras', desc: '', tamano: 'S', probable: 7 }
-                ];
-                renderEstimation();
-            }
-        }
-
+        // ========== DESCARGAR EXCEL ==========
         function downloadExcel() {
             const wb = XLSX.utils.book_new();
 
             // Hoja Parametros
+            const valPromMes = params.costo_mes * (1 + params.riesgo_pct + params.utilidad_pct);
+            const riesgoValor = params.costo_mes * params.riesgo_pct;
+            const utilidadValor = params.costo_mes * params.utilidad_pct;
+
             const paramsData = [
                 ['Grupo', 'Parametro', 'Valor'],
                 ['Análoga', 'Optimista', params.analog_opt],
@@ -749,9 +1010,9 @@
                 ['', 'XXL', params.dur.XXL],
                 ['', 'VL', params.dur.VL],
                 ['Costo promedio mes recurso', '', params.costo_mes],
-                ['Riesgo', params.riesgo_pct, params.costo_mes * params.riesgo_pct],
-                ['Utilidad', params.utilidad_pct, params.costo_mes * params.utilidad_pct],
-                ['Valor promedio mes', '', params.costo_mes * (1 + params.riesgo_pct + params.utilidad_pct)]
+                ['Riesgo', params.riesgo_pct, riesgoValor],
+                ['Utilidad', params.utilidad_pct, utilidadValor],
+                ['Valor promedio mes', '', valPromMes]
             ];
             const wsParams = XLSX.utils.aoa_to_sheet(paramsData);
             XLSX.utils.book_append_sheet(wb, wsParams, 'Parametros');
@@ -760,19 +1021,10 @@
             const cliente = document.getElementById('cliente').value;
             const fecha = document.getElementById('fecha').value;
 
-            let estData = [
-                ['Plantilla de Estimación de Proyectos'],
-                ['', '', '', '', '', '', '', '', '', '', 'Análoga', 'Paramétrica', 'Botom UP', 'Valor total del proyecto', '', 'Valor total del proyecto', 'Duración meses', 'Valor mensual'],
-                ['', '', 'Cliente', cliente, '', '', 'Fecha', fecha, 'Estimación', 'X', '', '', '', '', '', '', '', ''],
-                ['#', 'Tipo de actividad', 'Nombre de Actividad', 'Descripción', 'Estimación', '', '', '', '', '', '', 'Número de recursos', '', '', '', '', ''],
-                ['', '', '', '', 'RANGOS', '', params.analog_opt, params.analog_pes, '', '', 'Duración días', '', '', '', '', '', ''],
-            ];
-
-            // Calcular totales
             let totProbable = 0, totOpt = 0, totPes = 0, totPert = 0, totSigma = 0, totSigma2 = 0, totDur = 0, totCosto = 0;
             activities.forEach(act => {
                 const calc = calcRow(act);
-                totProbable += act.probable || 0;
+                totProbable += calc.probable;
                 totOpt += calc.optimista;
                 totPes += calc.pesimista;
                 totPert += calc.pert;
@@ -782,42 +1034,43 @@
                 totCosto += calc.costo;
             });
 
-            const costo_dia = params.costo_mes / 30;
-            const numRecursos = Math.ceil(totCosto / params.costo_mes);
-            const durMeses = totDur / 30;
-            const valTotal = totCosto * (1 + params.riesgo_pct + params.utilidad_pct);
-            const valMensual = durMeses > 0 ? valTotal / durMeses : 0;
+            const costo_dia = params.costo_mes / 22;
+            const numRecursos = totCosto / params.costo_mes;
+            const durMeses = totPert / 22;
+            const valTotal = totPert * (valPromMes / 22);
+            const valMensual = durMeses > 0 ? valTotal / Math.ceil(durMeses) : 0;
 
-            estData[2][13] = valTotal;
-            estData[2][15] = valTotal;
-            estData[2][16] = durMeses;
-            estData[2][17] = valMensual;
-            estData[4][11] = numRecursos;
-
-            estData.push(['', '', '', '', 'TOTALES', totProbable, totOpt, totPes, totPert, totSigma, totSigma2, totDur, totCosto / costo_dia, '', '', '', '']);
-            estData.push(['', '', '', '', 'Tamaño', '+ Probable', 'Optimista', 'Pesimista', 'PERT', 'Sigma', '2 Sigmas', totDur, totCosto]);
+            let estData = [
+                ['Plantilla de Estimación de Proyectos'],
+                ['', '', '', '', '', '', '', '', '', 'Análoga', 'Paramétrica', 'Botom UP', 'Valor total del proyecto', '', 'Valor total del proyecto', 'Duración meses', 'Valor mensual'],
+                ['', '', 'Cliente', cliente, '', '', 'Fecha', fecha, 'Estimación', 'X', '', '', valTotal, '', valTotal, Math.ceil(durMeses), valMensual],
+                ['#', 'Tipo de actividad', 'Nombre de Actividad', 'Descripción', 'Estimación', '', '', '', '', '', '', 'Número de recursos', '', '', '', '', ''],
+                ['', '', '', '', 'RANGOS', '', params.analog_opt, params.analog_pes, '', '', 'Duración días', '', numRecursos, '', '', '', ''],
+                ['', '', '', '', 'TOTALES', totProbable, totOpt, totPes, totPert, totSigma, totSigma2, totDur, numRecursos, totCosto, valTotal, durMeses, valMensual],
+                ['', '', '', '', 'Tamaño', '+ Probable', 'Optimista', 'Pesimista', 'PERT', 'Sigma', '2 Sigmas', totDur, totCosto]
+            ];
 
             activities.forEach(act => {
                 const calc = calcRow(act);
-                estData.push([act.id, act.tipo, act.nombre, act.desc, act.tamano, act.probable, calc.optimista, calc.pesimista, calc.pert, calc.sigma, calc.sigma2, calc.duracion, calc.costo]);
+                estData.push([act.id, act.tipo, act.nombre, act.desc, act.tamano, calc.probable, calc.optimista, calc.pesimista, calc.pert, calc.sigma, calc.sigma2, calc.duracion, calc.costo]);
             });
 
             const wsEst = XLSX.utils.aoa_to_sheet(estData);
             XLSX.utils.book_append_sheet(wb, wsEst, 'Estimación');
 
             // Hoja Mantenimiento
-            let maintData = [['Detalle', 'Cantidad', 'Costo']];
             let maintTotal = 0;
+            let maintData = [['Detalle', 'Cantidad', 'Costo', 'Duracion']];
             maintenance.forEach(item => {
-                maintData.push([item.detalle, item.cantidad, item.costo]);
-                maintTotal += item.costo;
+                maintData.push([item.detalle, item.cantidad, item.costo, item.duracion]);
+                maintTotal += parseFloat(item.costo) || 0;
             });
-            maintData.push(['Total', '', maintTotal]);
+            maintData.push(['Total', '', maintTotal, '']);
             maintData.push(['']);
-            maintData.push(['Resumen de proyecto', 'Precio']);
-            maintData.push(['Implementación', valTotal]);
-            maintData.push(['Mantenimiento', maintTotal]);
-            maintData.push(['Total', valTotal + maintTotal]);
+            maintData.push(['Resumen de proyecto', 'Precio', '']);
+            maintData.push(['Implementación', valTotal, '']);
+            maintData.push(['Mantenimiento', maintTotal, '']);
+            maintData.push(['Total', valTotal + maintTotal, '']);
 
             const wsMaint = XLSX.utils.aoa_to_sheet(maintData);
             XLSX.utils.book_append_sheet(wb, wsMaint, 'Mantenimiento');
@@ -825,9 +1078,11 @@
             XLSX.writeFile(wb, 'Formato_Cotizacion.xlsx');
         }
 
-        // Inicializar
+        // ========== INICIALIZAR ==========
+        updateParamInputs();
         renderEstimation();
         renderMaintenance();
+        applyParams();
     </script>
 </body>
 </html>
